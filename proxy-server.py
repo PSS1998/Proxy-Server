@@ -220,14 +220,17 @@ class proxy_server:
         heloCommand = 'ehlo mail.ut.ac.ir\r\n'
         clientSocket.send(heloCommand.encode())
         recv1 = clientSocket.recv(1024)
+        #add username and password for your email in base64 here
         base64_str = "" + "\r\n" + ""
         authMsg = "AUTH LOGIN\r\n".encode()+base64_str.encode()+"\r\n".encode()
         clientSocket.send(authMsg)
         recv_auth = clientSocket.recv(1024)
-        mailFrom = "MAIL FROM: <sadri.parsa@ut.ac.ir>\r\n"
+        #add sending email address here
+        mailFrom = "MAIL FROM: <@ut.ac.ir>\r\n"
         clientSocket.send(mailFrom.encode())
         recv2 = clientSocket.recv(1024)
-        rcptTo = "RCPT TO: <p_sadri_s@yahoo.com>\r\n"
+        #add receving email here
+        rcptTo = "RCPT TO: <@yahoo.com>\r\n"
         clientSocket.send(rcptTo.encode())
         recv3 = clientSocket.recv(1024)
         data = "DATA\r\n"
